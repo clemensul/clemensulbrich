@@ -89,7 +89,7 @@ jobs:
       - run:
           name: Run frontend tests
           command: |
-            yarn test:ci --code-coverage
+            yarn test:ci
             ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
       - run:
           name: Upload coverage results to Code Climate
