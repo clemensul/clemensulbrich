@@ -1,37 +1,162 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+      - image: circleci/node:8.9.4-browsers
     steps:
       - checkout
+
+      - attach_workspace:
+          at: ~/repo/tmp
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
       - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
-      # run tests!
-      - run: yarn test
+
+  deploy:
+    docker:
+      - image: circleci/node:8.9.4-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Build app in production mode
+          command: |
+            yarn build:prod
+
+      - run:
+          name: Deploy app to firebase
+          command: |
+            ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_DEPLOY
+
+
+  lint:
+    docker:
+      - image: circleci/node:8.9.4-browsers
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn lint
+
+  test:
+    docker:
+      - image: circleci/node:8.9.4-browsers
+    steps:
+      - checkout
+
+      - run:
+          name:  Download cc-test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Run frontend tests
+          command: |
+            yarn test:ci --code-coverage
+            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
+
+  e2e:
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package-lock.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo apt-get update
+            sudo apt-get install google-chrome-stable
+
+      - run: yarn e2e:ci
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - release
+                - develop
+                - feature/*
+      - lint:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
+      - e2e:
+          requires:
+            - build
+  deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - lint:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
+      - e2e:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - lint
+            - test
+            - e2e
+
