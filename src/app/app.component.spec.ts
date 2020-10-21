@@ -26,4 +26,25 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('I´m Clemens Ulbrich');
   });
+
+  it('should render a linkedin button', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#linkedin').textContent).toContain('LinkedIn');
+  });
+
+  it('should render a instagram button', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#instagram').textContent).toContain('Instagram');
+  });
+
+  it('should render a twitter button', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#twitter').textContent).toContain('Twitter');
+  });
 });
