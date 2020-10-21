@@ -14,18 +14,15 @@ describe('workspace-project App', () => {
   });
 
   it('should display linkedin button with capitals', () => {
-    page.navigateTo();
-    expect(page.getButtonText('linkedin')).toEqual('LINKEDIN');
+    shouldDisplayButton(page, 'linkedin', 'LINKEDIN');
   });
 
   it('should display instagram button with capitals', () => {
-    page.navigateTo();
-    expect(page.getButtonText('instagram')).toEqual('INSTAGRAM');
+    shouldDisplayButton(page, 'instagram', 'INSTAGRAM');
   });
 
   it('should display twitter button with capitals', () => {
-    page.navigateTo();
-    expect(page.getButtonText('twitter')).toEqual('TWITTER');
+    shouldDisplayButton(page, 'twitter', 'TWITTER');
   });
 
   afterEach(async () => {
@@ -36,3 +33,8 @@ describe('workspace-project App', () => {
     } as logging.Entry));
   });
 });
+
+function shouldDisplayButton(page: AppPage, id: string, text: string) {
+  page.navigateTo();
+  expect(page.getButtonText(id)).toEqual(text);
+}
