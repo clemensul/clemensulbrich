@@ -28,23 +28,22 @@ describe('AppComponent', () => {
   });
 
   it('should render a linkedin button', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#linkedin').textContent).toContain('LinkedIn');
+    shouldRenderButton('linkedin', 'LinkedIn');
   });
 
   it('should render a instagram button', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#instagram').textContent).toContain('Instagram');
+    shouldRenderButton('instagram', 'Instagram');
   });
 
   it('should render a twitter button', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('#twitter').textContent).toContain('Twitter');
+    shouldRenderButton('twitter', 'Twitter');
   });
 });
+
+
+function shouldRenderButton(id: string, text: string) {
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+  const compiled = fixture.debugElement.nativeElement;
+  expect(compiled.querySelector(`#${id}`).textContent).toContain(text);
+}
