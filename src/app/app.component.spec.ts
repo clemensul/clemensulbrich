@@ -1,16 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GREETINGS } from 'src/assets/greetings';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
 
@@ -24,7 +21,18 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('I´m Clemens Ulbrich');
+    expect(compiled.querySelector('h1').textContent).toContain(
+      'I´m Clemens Ulbrich'
+    );
+  });
+
+  it('should render a greeting in a h2 tag', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(
+      GREETINGS.includes(compiled.querySelector('h2').textContent)
+    ).toBeTrue();
   });
 
   it('should render a linkedin button', () => {
@@ -39,7 +47,6 @@ describe('AppComponent', () => {
     shouldRenderButton('twitter', 'Twitter');
   });
 });
-
 
 function shouldRenderButton(id: string, text: string) {
   const fixture = TestBed.createComponent(AppComponent);
