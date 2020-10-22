@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -41,7 +41,7 @@
     "codelyzer": "6.0.1",
     "firebase-tools": "8.13.1",
     "jasmine-core": "2.99.1",
-    "jasmine-spec-reporter": "4.2.1",
+    "jasmine-spec-reporter": "6.0.0",
     "karma": "4.4.1",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage-istanbul-reporter": "2.1.1",
