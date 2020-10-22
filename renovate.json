@@ -1,12 +1,31 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "packageRules": [
     {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "packagePatterns": ["eslint", "tslint", "codelyzer"],
+      "labels": ["linting"]
+    },
+    {
+      "packagePatterns": ["karma", "protractor"],
+      "labels": ["test"]
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "prPriority": -1
+    },
+    {
+      "packageNames": ["^@angular"],
+      "prPriority": 5,
+      "labels": ["angular"]
     }
   ],
-  "bumpVersion": "patch"
+  "bumpVersion": "patch",
+  "assignees": "clemensul",
+  "labels": ["dependencies"],
+  "automerge": true,
+  "automergeType": "branch"
 }
