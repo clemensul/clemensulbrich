@@ -1,53 +1,56 @@
+@import "../styles/partials/colors";
+@import "../styles/partials/breakpoints";
+
+@mixin button($color) {
+  background-color: $color;
+  &:hover {
+    background: darken($color, 2);
+  }
+}
+
 #message {
   background: white;
   max-width: 360px;
   margin: 100px auto 16px;
   padding: 32px 24px;
   border-radius: 3px;
-}
 
-#message h2 {
-  color: #1540ff;
-  font-weight: bold;
-  font-size: 16px;
-  margin: 0 0 8px;
-}
+  h2 {
+    color: $accent;
+    font-weight: bold;
+    margin: 0 0 8px;
+    transition: ease-out 0.5s;
+  }
 
-#message h1 {
-  font-size: 22px;
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.6);
-  margin: 0 0 16px;
-}
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #00000099;
+    margin: 0 0 16px;
+  }
 
-#message p {
-  line-height: 140%;
-  margin: 16px 0 24px;
-  font-size: 14px;
-}
+  a {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 6px;
 
-#linkedin {
-  background: #0373AF !important;
-}
+    &#linkedin {
+      @include button($linkedin);
+    }
 
-#instagram {
-  background: #F6346A !important;
-}
+    &#instagram {
+      @include button($instagram);
+    }
 
-#twitter {
-  background: #23A0F2 !important;
-}
-
-#message a {
-  display: block;
-  text-align: center;
-  background: #1540ff;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: white;
-  padding: 16px;
-  border-radius: 4px;
-  margin-bottom: 6px;
+    &#twitter {
+      @include button($twittter);
+    }
+  }
 }
 
 #message,
@@ -55,17 +58,17 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+#message:hover {
+  h2 {
+    margin: 4px 0 4px;
+  }
+}
+
 .links {
   padding-top: 2rem;
 }
 
-#footer {
-  color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-  font-size: 13px;
-}
-
-@media (max-width: 600px) {
+@media (max-width: $mobile) {
   #message {
     margin-top: 0;
     background: white;
