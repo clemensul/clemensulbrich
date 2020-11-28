@@ -126,7 +126,7 @@
               "devServerTarget": "clemensulbrich:serve:production"
             },
             "ci": {
-              "devServerTarget": "clemensulbrich:serve:production",
+              "devServerTarget": "clemensulbrich:serve",
               "protractorConfig": "e2e/protractor-ci.conf.js"
             }
           }
