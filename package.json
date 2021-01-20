@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.0.63",
+  "version": "1.0.64",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -35,7 +35,7 @@
     "@angular/cli": "11.0.7",
     "@angular/compiler-cli": "11.0.9",
     "@angular/language-service": "11.0.9",
-    "@types/jasmine": "3.6.2",
+    "@types/jasmine": "3.6.3",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.19.1",
     "codelyzer": "6.0.1",
