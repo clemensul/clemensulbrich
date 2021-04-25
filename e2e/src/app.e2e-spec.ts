@@ -28,13 +28,16 @@ describe('workspace-project App', () => {
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    expect(logs).not.toContain(
+      jasmine.objectContaining({
+        level: logging.Level.SEVERE
+      } as logging.Entry)
+    );
   });
 });
 
 function shouldDisplayButton(page: AppPage, id: string, text: string) {
   page.navigateTo();
   expect(page.getButtonText(id)).toEqual(text);
+  expect(page.getTextTransformCSSProperty(id)).toContain('uppercase');
 }

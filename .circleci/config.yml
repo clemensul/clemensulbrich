@@ -13,9 +13,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run: yarn install
 
@@ -23,7 +23,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-
 
   deploy:
     docker:
@@ -33,9 +32,9 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run:
           name: Build app in production mode
@@ -47,7 +46,6 @@ jobs:
           command: |
             ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_DEPLOY
 
-
   lint:
     docker:
       - image: circleci/node:12.22.1-browsers
@@ -56,9 +54,9 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run: yarn lint
 
@@ -69,7 +67,7 @@ jobs:
       - checkout
 
       - run:
-          name:  Download cc-test-reporter
+          name: Download cc-test-reporter
           command: |
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
@@ -82,15 +80,15 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run:
           name: Run frontend tests
           command: |
             yarn test:ci
-            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json ./coverage/clemensulbrich/lcov.info
+            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json ./coverage/clemensulbrich/report-lcov/lcov.info
       - run:
           name: Upload coverage results to Code Climate
           command: |
@@ -104,9 +102,9 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
       - run:
           name: Install Chrome
@@ -159,4 +157,3 @@ workflows:
             - lint
             - test
             - e2e
-

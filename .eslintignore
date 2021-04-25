@@ -1,0 +1,7 @@
+package.json
+package-lock.json
+dist
+e2e/*.conf.js
+src/karma.conf.js
+firebase.json
+renovate.json
