@@ -39,9 +39,9 @@ describe('AppComponent', () => {
   });
 
   it('should load dark theme from storage', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-
     localStorage.setItem('theme', 'dark');
+
+    const fixture = TestBed.createComponent(AppComponent);
 
     fixture.detectChanges();
 
