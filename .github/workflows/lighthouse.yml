@@ -37,3 +37,5 @@ jobs:
         with:
           # no urls needed, since it uses local folder to scan .html files
           configPath: './.lighthouserc.json'
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
