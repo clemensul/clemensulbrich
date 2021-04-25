@@ -9,14 +9,6 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: Add comment to PR
-        uses: marocchino/sticky-pull-request-comment@v2
-        id: loading_comment_to_pr
-        with:
-          number: ${{ steps.finder.outputs.pr }}
-          header: lighthouse
-          message: |
-            Running Lighthouse audit for ${{ github.sha }}...
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
@@ -75,11 +67,10 @@ jobs:
                 `*Lighthouse ran on [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
              core.setOutput("comment", comment);
-      - name: Add comment to PR
-        uses: marocchino/sticky-pull-request-comment@v2
-        id: comment_to_pr
+      - name: comment PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          number: ${{ steps.finder.outputs.pr }}
-          header: lighthouse
-          message: |
+          msg: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
