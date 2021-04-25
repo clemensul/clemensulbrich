@@ -4,7 +4,7 @@
       "staticDistDir": "./dist/clemensulbrich"
     },
     "assert": {
-      "preset": 'lighthouse:recommended',
+      "preset": "lighthouse:recommended",
     }
   }
 }
