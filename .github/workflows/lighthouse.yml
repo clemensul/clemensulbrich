@@ -42,6 +42,7 @@ jobs:
         env:
           CI: true
       - name: Run Lighthouse against a static dist dir
+        id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v7
         with:
           # no urls needed, since it uses local folder to scan .html files
