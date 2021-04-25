@@ -3,8 +3,8 @@
     "collect": {
       "staticDistDir": "./dist/clemensulbrich"
     },
-    assert: {
-      preset: 'lighthouse:recommended',
+    "assert": {
+      "preset": 'lighthouse:recommended',
     }
   }
 }
