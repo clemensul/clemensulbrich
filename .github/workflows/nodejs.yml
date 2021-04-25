@@ -70,7 +70,7 @@ jobs:
         with:
           coverageCommand: npm run test:ci
           coverageLocations: |
-            ${{github.workspace}}/coverage/clemensulbrich/lcov.info:lcov
+            ${{github.workspace}}/coverage/report-lcov/lcov.info:lcov
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.code_climate_reporter_id }}
           CI: true
