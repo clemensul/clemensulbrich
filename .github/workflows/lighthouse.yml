@@ -13,6 +13,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         id: loading_comment_to_pr
         with:
+          number: ${{ steps.finder.outputs.pr }}
           header: lighthouse
           message: |
             Running Lighthouse audit for ${{ github.sha }}...
@@ -78,6 +79,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         id: comment_to_pr
         with:
+          number: ${{ steps.finder.outputs.pr }}
           header: lighthouse
           message: |
             ${{ steps.format_lighthouse_score.outputs.comment }}
