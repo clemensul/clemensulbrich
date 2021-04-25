@@ -2,9 +2,6 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist/clemensulbrich"
-    },
-    "assert": {
-      "preset": "lighthouse:recommended"
     }
   }
 }
