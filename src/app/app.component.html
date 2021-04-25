@@ -1,13 +1,24 @@
-<div id="message">
-  <h2>{{ greeting }}</h2>
-  <h1>I´m Clemens Ulbrich</h1>
+<div class="container">
+  <div class="card" id="message">
+    <h2>{{ greeting }}</h2>
+    <h1>I´m Clemens Ulbrich</h1>
 
-  <!-- <p>Here are some links:</p> -->
-  <div class="links">
-    <a href="https://www.linkedin.com/in/clemensulbrich/" id="linkedin">LinkedIn</a>
-    <a href="https://www.instagram.com/clemens_ul/" id="instagram">Instagram</a>
-    <a href="https://twitter.com/ClemensUl" id="twitter">Twitter</a>
+    <!-- <p>Here are some links:</p> -->
+    <div class="links">
+      <a class="btn" href="https://www.linkedin.com/in/clemensulbrich/" id="linkedin">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/clemens_ul/" id="instagram">Instagram</a>
+      <a class="btn" href="https://twitter.com/ClemensUl" id="twitter">Twitter</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" [(ngModel)]="isDarkTheme" (change)="onThemeChange(isDarkTheme)" />
+        <div class="slider round"></div>
+      </label>
+      <em>Enable Dark Mode!</em>
+    </div>
   </div>
 </div>
-
 <!-- <router-outlet></router-outlet> -->

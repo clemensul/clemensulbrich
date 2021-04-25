@@ -1,15 +1,18 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { by, By } from 'protractor';
 import { GREETINGS } from 'src/assets/greetings';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule],
+        declarations: [AppComponent]
+      }).compileComponents();
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -33,6 +36,46 @@ describe('AppComponent', () => {
     expect(
       GREETINGS.includes(compiled.querySelector('h2').textContent)
     ).toBeTrue();
+  });
+
+  it('should load dark theme from storage', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    localStorage.setItem('theme', 'dark');
+
+    fixture.detectChanges();
+
+    expect(
+      document.documentElement.getAttribute('data-theme') === 'dark'
+    ).toBeTrue();
+  });
+
+  it('should switch to dark theme', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.componentInstance.onThemeChange(true);
+
+    fixture.detectChanges();
+
+    expect(
+      document.documentElement.getAttribute('data-theme') === 'dark'
+    ).toBeTrue();
+    expect(localStorage.getItem('theme') === 'dark').toBeTruthy();
+  });
+
+  it('should switch to light theme', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    localStorage.setItem('theme', 'dark');
+    fixture.detectChanges();
+
+    fixture.componentInstance.onThemeChange(false);
+    fixture.detectChanges();
+
+    expect(
+      document.documentElement.getAttribute('data-theme') === 'light'
+    ).toBeTrue();
+    expect(localStorage.getItem('theme') === null).toBeTruthy();
   });
 
   it('should render a linkedin button', () => {
