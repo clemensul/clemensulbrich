@@ -24,7 +24,6 @@
     }
   ],
   "bumpVersion": "patch",
-  "assignees": ["clemensul"],
   "labels": ["dependencies"],
   "automerge": true,
   "automergeType": "branch"
