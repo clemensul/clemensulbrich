@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.103",
+  "version": "1.1.104",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,7 +15,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/schematics": "12.1.4",
+    "@angular-devkit/schematics": "12.2.1",
     "@angular/animations": "12.2.0",
     "@angular/common": "12.2.0",
     "@angular/compiler": "12.2.0",
@@ -23,7 +23,7 @@
     "@angular/forms": "12.2.0",
     "@angular/platform-browser": "12.2.0",
     "@angular/platform-browser-dynamic": "12.2.0",
-    "@angular/pwa": "12.1.4",
+    "@angular/pwa": "12.2.1",
     "@angular/router": "12.2.0",
     "@angular/service-worker": "12.2.0",
     "core-js": "3.16.0",
@@ -32,8 +32,8 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "12.1.4",
-    "@angular/cli": "12.1.4",
+    "@angular-devkit/build-angular": "12.2.1",
+    "@angular/cli": "12.2.1",
     "@angular/compiler-cli": "12.2.0",
     "@angular/language-service": "12.2.0",
     "@types/jasmine": "3.8.2",
