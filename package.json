@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.133",
+  "version": "1.1.134",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,7 +26,7 @@
     "@angular/pwa": "12.2.5",
     "@angular/router": "12.2.5",
     "@angular/service-worker": "12.2.5",
-    "core-js": "3.17.1",
+    "core-js": "3.17.2",
     "rxjs": "7.3.0",
     "tslib": "2.3.1",
     "zone.js": "0.11.4"
