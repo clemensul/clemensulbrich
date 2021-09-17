@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.146",
+  "version": "1.1.147",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -51,7 +51,7 @@
     "karma-coverage": "2.0.3",
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.7.0",
-    "prettier": "2.4.0",
+    "prettier": "2.4.1",
     "prettier-eslint": "13.0.0",
     "protractor": "7.0.0",
     "ts-node": "10.2.1",
