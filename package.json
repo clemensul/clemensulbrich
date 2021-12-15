@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.208",
+  "version": "1.1.209",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -38,7 +38,7 @@
     "@angular/language-service": "12.2.14",
     "@types/jasmine": "3.10.2",
     "@types/jasminewd2": "2.0.10",
-    "@types/node": "16.11.12",
+    "@types/node": "16.11.14",
     "@typescript-eslint/eslint-plugin": "5.6.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "6.15.0",
