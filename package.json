@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.299",
+  "version": "1.1.300",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -40,7 +40,7 @@
     "@types/jasminewd2": "2.0.10",
     "@types/node": "16.11.39",
     "@typescript-eslint/eslint-plugin": "5.28.0",
-    "eslint": "8.16.0",
+    "eslint": "8.17.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-prettier": "4.0.0",
     "firebase-tools": "11.1.0",
