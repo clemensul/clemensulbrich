@@ -128,7 +128,6 @@
       }
     }
   },
-  "defaultProject": "clemensulbrich",
   "cli": {
     "analytics": false
   }
