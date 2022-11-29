@@ -26,7 +26,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/node:16.13.1-browsers-browsers
+      - image: circleci/node:16.13.1-browsers
     steps:
       - checkout
 
