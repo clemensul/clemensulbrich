@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.544",
+  "version": "1.1.545",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -44,7 +44,7 @@
     "eslint": "8.47.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-prettier": "4.2.1",
-    "firebase-tools": "12.5.1",
+    "firebase-tools": "12.9.1",
     "jasmine-core": "5.1.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.2",
