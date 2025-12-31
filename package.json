@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.544",
+  "version": "1.1.545",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,7 +27,7 @@
     "@angular/router": "15.2.9",
     "@angular/service-worker": "15.2.9",
     "core-js": "3.32.1",
-    "rxjs": "7.8.1",
+    "rxjs": "7.8.2",
     "tslib": "2.6.2",
     "zone.js": "0.13.1"
   },
