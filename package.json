@@ -1,6 +1,6 @@
 {
   "name": "clemensulbrich",
-  "version": "1.1.544",
+  "version": "1.1.545",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@angular-devkit/schematics": "15.2.9",
     "@angular/animations": "15.2.9",
-    "@angular/common": "15.2.9",
+    "@angular/common": "19.2.16",
     "@angular/compiler": "15.2.9",
     "@angular/core": "15.2.9",
     "@angular/forms": "15.2.9",
